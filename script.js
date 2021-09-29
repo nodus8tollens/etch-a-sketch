@@ -1,5 +1,4 @@
 
-
 //CREATE CONTAINER
 const container = document.createElement('div');
 container.style.display = 'grid';
@@ -9,6 +8,12 @@ container.style.border = '5px solid black';
 container.style.margin = 'auto';
 container.style.marginTop = '50px';
 document.body.appendChild(container);
+
+//CLEAR BUTTON
+const button = document.createElement('button');
+button.textContent = "Clear";
+button.addEventListener('click', clear);
+document.body.appendChild(button);
 
 //PROMPT SIZE
 function promptSize(){
@@ -32,10 +37,11 @@ function fill() {
 
         cells.push(div);
         div.setAttribute('class', 'cell');
-        div.style.border = '1px dotted black';
+        //div.style.border = '1px dotted black';
 
         div.addEventListener('mouseenter', e => {
-            div.style.backgroundColor = 'black';
+            //div.style.backgroundColor = 'black';
+            div.style.backgroundColor = randomColor();
         });
 
         container.appendChild(div);
@@ -49,11 +55,12 @@ function clear(){
     fill();
 }
 
-const button = document.createElement('button');
-button.textContent = "Clear";
-button.addEventListener('click', clear);
-
-
-document.body.appendChild(button);
-
-
+//COLOR SELECTION
+function randomColor(){
+    let r = Math.floor(Math.random()*255);
+    let g = Math.floor(Math.random()*255);
+    let b = Math.floor(Math.random()*255);
+    //color = "rgb(255, 0, 255)";
+    //Math.floor(Math.random()*255);
+    return "rgb(" + r + "," + g + "," + b + ")";
+}
